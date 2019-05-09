@@ -89,7 +89,7 @@ hosts:
     - bar.test
     - baz.test
 ```
-Defines the domains and hosts for VVV to listen on. 
+Defines the domains and hosts for VVV to listen on.
 The first domain in this list is your sites primary domain.
 
 ```
@@ -119,6 +119,7 @@ Valid values are:
 - single
 - subdomain
 - subdirectory
+- none
 
 ```
 custom:
