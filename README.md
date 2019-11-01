@@ -9,11 +9,13 @@ The supported environments are:
 - A subdomain multisite
 - A subdirectory multisite
 
+The Nginx configuration for this site can be overriden by creating a `vvv-nginx-custom.conf`.
+
 # Configuration
 
 ### The minimum required configuration:
 
-```
+```yaml
 my-site:
   repo: https://github.com/Varying-Vagrant-Vagrants/custom-site-template
   hosts:
@@ -29,7 +31,7 @@ my-site:
 
 ### Minimal configuration with custom domain and WordPress Nightly:
 
-```
+```yaml
 my-site:
   repo: https://github.com/Varying-Vagrant-Vagrants/custom-site-template
   hosts:
@@ -47,7 +49,7 @@ my-site:
 
 ### WordPress Multisite with Subdomains:
 
-```
+```yaml
 my-site:
   repo: https://github.com/Varying-Vagrant-Vagrants/custom-site-template
   hosts:
@@ -66,7 +68,7 @@ my-site:
 
 ### WordPress Multisite with Subdirectory:
 
-```
+```yaml
 my-site:
   repo: https://github.com/Varying-Vagrant-Vagrants/custom-site-template
   hosts:
@@ -83,7 +85,7 @@ my-site:
 
 ## Configuration Options
 
-```
+```yaml
 hosts:
     - foo.test
     - bar.test
@@ -92,13 +94,13 @@ hosts:
 Defines the domains and hosts for VVV to listen on.
 The first domain in this list is your sites primary domain.
 
-```
+```yaml
 custom:
     site_title: My Awesome Dev Site
 ```
 Defines the site title to be set upon installing WordPress.
 
-```
+```yaml
 custom:
     wp_version: 4.6.4
 ```
@@ -110,7 +112,7 @@ Valid values are:
 
 Older versions of WordPress will not run on PHP7, see this page on [how to change PHP version per site](https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/changing-php-version/).
 
-```
+```yaml
 custom:
     wp_type: single
 ```
@@ -121,10 +123,32 @@ Valid values are:
 - subdirectory
 - none
 
-```
+```yaml
 custom:
     db_name: super_secet_db_name
 ```
 Defines the DB name for the installation.
 
+Other parameters available:
 
+```yaml
+custom:
+    delete_default_plugins: true # Only on install of WordPress
+    install_test_content: true # Install test content. Only on install of WordPress
+    install_plugins: # Various way to install a plugin
+         - query-monitor
+         - https://github.com/crstauf/query-monitor-extend/archive/version/1.0.zip
+         - https://github.com/norcross/airplane-mode/archive/master.zip
+    install_themes: # Various way to install a theme
+         - understrap
+         - https://github.com/understrap/understrap-child.git
+    wpconfig_constants:
+         WP_DEBUG: true
+         WP_DEBUG_LOG: true
+         WP_DISABLE_FATAL_ERROR_HANDLER: true # To disable in WP 5.2 the FER mode
+    locale: it_IT
+    admin_user: admin # Only on install of WordPress
+    admin_password: password # Only on install of WordPress
+    admin_email: admin@local.test # Only on install of WordPress
+    live_url: http://example.com # Redirect any uploads not found locally to this domain
+```

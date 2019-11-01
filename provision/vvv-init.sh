@@ -41,8 +41,8 @@ if [ "${WP_TYPE}" != "none" ]; then
   if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-config.php" ]]; then
     echo "Configuring WordPress Stable..."
     noroot wp core config --dbname="${DB_NAME}" --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
-define('WP_DEBUG', true);
-define('SCRIPT_DEBUG', true);
+define( 'WP_DEBUG', true );
+define( 'SCRIPT_DEBUG', true );
 //disable WP Post Revisions
 define('AUTOSAVE_INTERVAL', 300); // seconds
 define('WP_POST_REVISIONS', false);
